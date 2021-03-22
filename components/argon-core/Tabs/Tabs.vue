@@ -19,7 +19,7 @@
       >
         <li
           v-for="tab in tabs"
-          class="nav-item active"
+          class="nav-item active mx-lg-0 mx-1"
           data-toggle="tab"
           role="tablist"
           aria-expanded="true"
@@ -76,6 +76,7 @@ export default {
       validator: value => {
         let acceptedValues = [
           'primary',
+          'default',
           'info',
           'success',
           'warning',

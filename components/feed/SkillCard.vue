@@ -83,8 +83,7 @@
     },
     computed: {
       typeLocalize() {
-        if (this.skill.type !== 3) return `${this.$t('bromide.skill.label')} ${this.skill.type}`
-        else return `${this.$t('bromide.skill.support')}`
+        return this.skill.type == 1 ? this.$t('bromide.skill.active') : this.skill.type == 2 ? this.$t('bromide.skill.passive') : this.$t('bromide.skill.support')
       }
     },
     created() {

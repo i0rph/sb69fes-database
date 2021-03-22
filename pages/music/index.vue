@@ -145,6 +145,8 @@
           12: this.$t('artist.shinimonogurui'),
           13: this.$t('artist.uwasanopetals'),
           14: this.$t('artist.ninjinriot'),
+          15: this.$t('artist.zerotickholic'),
+          18: this.$t('artist.kuronoatmosphere'),
           90: this.$t('artist.special'),
           99: this.$t('artist.independent'),
         }

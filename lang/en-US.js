@@ -28,6 +28,11 @@ export default {
       title: 'Account',
       register: 'Register',
       login: 'Login'
+    },
+    quiz: {
+      title: 'Quiz',
+      custom: 'Custom Quiz',
+      play: 'Play Quiz'
     }
   },
   error: {
@@ -97,6 +102,7 @@ export default {
   },
   edit: {
     title: 'Edit Translation',
+    lyric: 'Edit Lyric',
     name: 'Name',
     description: 'Description',
     submit: 'Edit'
@@ -114,7 +120,9 @@ export default {
     },
     skill: {
       label: 'Skill',
-      support: 'Support Skill'
+      support: 'Support Skill',
+      active: 'Active Skill',
+      passive: 'Passive Skill'
     },
     shinka: 'Awaken',
     unshinka: 'Before Awaken',
@@ -148,6 +156,21 @@ export default {
     myumons: 'Event Bonus Bromides',
     category_name: 'Event Category'
   },
+  quiz: {
+    correct: 'Correct',
+    wrong: 'Wrong',
+    title: 'Title',
+    band: 'Band',
+    next: 'Next',
+    normal: 'Normal',
+    custom: 'Custom',
+    playLimit: 'Music playtime',
+    timeLimit: 'Time limit',
+    quizAmount: 'Quiz amount',
+    showBand: 'Show band',
+    showTranslation: 'Show title translation',
+    start: 'Start'
+  },
   artist: {
     mashumairesh: 'Mashumairesh!!',
     plasmagica: 'Plasmagica',
@@ -163,6 +186,8 @@ export default {
     shinimonogurui: 'Shinimonogurui',
     uwasanopetals: 'Uwasanopetals',
     ninjinriot: "Ninjinriot",
+    zerotickholic: "Zeroticholic",
+    kuronoatmosphere: "Kuronoatmosphere",
     special: 'Special',
     independent: 'Independent'
   },
@@ -219,6 +244,16 @@ export default {
     arashi: 'Arashi',
     oboro: 'Oboro',
     rin: 'Rin',
-    kamui: 'Kamui'
+    kamui: 'Kamui',
+    gyarako: 'Gyarako',
+    shimakku: 'Shimakku',
+    reppanyo: 'Reppanyo',
+    kiriri: 'Kiriri',
+    151: '151 (Ikoi)',
+    13: '13 (Imi)',
+    659: '659 (Rokoku)',
+    919: '919 (Naiku)',
+    661: '661 (Roroi)',
+    shuu: 'Shū'
   }
 }

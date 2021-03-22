@@ -23,11 +23,6 @@
         <div class="row">
           <template v-if="$store.state.authUser">
             <div class="col-12 my-2">
-              <nuxt-link :to="localePath('/user/profile')" class="d-block text-reset text-center">
-                {{ $t('account.profile') }}
-              </nuxt-link>
-            </div>
-            <div class="col-12 my-2">
               <nuxt-link :to="localePath('/user/setting')" class="d-block text-reset text-center">
                 {{ $t('account.setting') }}
               </nuxt-link>
@@ -40,12 +35,12 @@
           </template>
           <template v-else>
             <div class="col-12 my-2">
-              <nuxt-link :to="localePath('/user/login')" class="d-block text-reset text-center">
+              <nuxt-link :to="{path:localePath('/user/login'), query:{redirect:$route.path}}" class="d-block text-reset text-center">
                 {{ $t('account.login') }}
               </nuxt-link>
             </div>
             <div class="col-12 my-2">
-              <nuxt-link :to="localePath('/user/register')" class="d-block text-reset text-center">
+              <nuxt-link :to="{path:localePath('/user/register'), query:{redirect:$route.path}}" class="d-block text-reset text-center">
                 {{ $t('account.register') }}
               </nuxt-link>
             </div>
@@ -110,7 +105,7 @@
       },
       async signout() {
         try {
-          await this.$store.dispatch('signout').then(() => this.$router.push(this.localePath('/')))
+          await this.$store.dispatch('signout')
         } catch(err) {
           console.log(err)
         }

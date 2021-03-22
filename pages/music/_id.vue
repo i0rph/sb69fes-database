@@ -26,7 +26,10 @@
                      style="width: 400px;">
               </div>
               <div class="col-lg-6 col-md-12 my-auto">
-                <small class="text-sm font-weight-bolder">{{ artist }}</small>
+                <h2 class="font-weight-bolder mb-0">{{ artist }}
+                  <small class="text-sm font-weight-bolder" v-if="music.translation[$i18n.locale].description"> {{music.translation[$i18n.locale].description}}</small>
+                  <small class="text-sm font-weight-bolder" v-else> {{music.description}}</small>
+                </h2>
                 <h1 class="display-2 mb-0" v-if="music.translation[$i18n.locale].name">
                   <small class="d-block text-sm font-weight-bolder" v-if="$store.state.showJP">{{ music.name }}</small>
                   {{music.translation[$i18n.locale].name}}
@@ -82,6 +85,11 @@
             </div>
           </card>
           <span class="badge-circle badge-md bg-secondary border-0 text-reset"
+                style="position: absolute;left: 4px;top: -12px;box-shadow: rgba(136, 152, 170, 0.875) 0.1rem 0.1rem 0.2rem;"
+                @click="initLyricModal" v-if="$store.state.authUser && $store.state.authUser.role.includes('translator')">
+            <i class="fas fa-music"></i>
+          </span>
+          <span class="badge-circle badge-md bg-secondary border-0 text-reset"
                 style="position: absolute;right: 4px;top: -12px;box-shadow: rgba(136, 152, 170, 0.875) 0.1rem 0.1rem 0.2rem;"
                 @click="initModal" v-if="$store.state.authUser && $store.state.authUser.role.includes('translator')">
             <i class="fas fa-edit"></i>
@@ -97,6 +105,45 @@
           <div class="col-12 mb-4">
             <base-input alternative type="text" :label="$t('edit.name')" formGroupClasses="mb-0" v-model="model[$i18n.locale].name"></base-input>
             <small class="text-muted">{{ music.name }}</small>
+          </div>
+          <div class="col-12 mb-4">
+            <base-input alternative type="text" :label="$t('edit.description')" formGroupClasses="mb-0" v-model="model[$i18n.locale].description"></base-input>
+            <small class="text-muted">{{ music.description }}</small>
+          </div>
+          <div class="col-12 text-center">
+            <base-button alternative type="primary" native-type="submit" class="w-100">{{ $t('edit.submit') }}</base-button>
+          </div>
+        </div>
+      </form>
+    </modal>
+    
+    <modal :show.sync="lyricModal" headerClasses="py-3" bodyClasses="pt-3">
+      <template slot="header"><h3 class="mb-0">{{ $t('edit.lyric') }}</h3></template>
+      <form @submit.prevent="translateLyric">
+        <div class="form-row">
+          <div class="col-12 mb-4">
+            <label class="d-block">
+              <div class="row mb-2">
+                <div class="col form-control-label">{{ $t('edit.lyric') }}</div>
+                <div class="col-auto"><base-checkbox v-model="LRC">{{ $t('edit.toggleLRC') }}</base-checkbox></div>
+              </div>
+            </label>
+              
+            <template v-if="LRC">
+              <div class="row">
+                <div class="col-3"><label class="form-control-label"></label>{{ $t('edit.lrctime') }}</div>
+                <div class="col"><label class="form-control-label">{{ $t('edit.lrclyric') }}</label></div>
+              </div>
+              <div class="row" v-for="r in parsedLRC">
+                <div class="col-3">
+                  <base-input alternative type="text" formGroupClasses="mb-0" v-model="r.time"></base-input>
+                </div>
+                <div class="col">
+                  <base-input alternative type="text" formGroupClasses="mb-0" v-model="r.lyric"></base-input>
+                </div>
+              </div>
+            </template>
+            <textarea class="form-control" rows="3" v-model="model[$i18n.locale].lyric" v-else></textarea>
           </div>
           <div class="col-12 text-center">
             <base-button alternative type="primary" native-type="submit" class="w-100">{{ $t('edit.submit') }}</base-button>
@@ -122,7 +169,7 @@
         meta: [
           { name: 'og:title', content: title, hid: 'og:title', template: chunk => `${chunk} - ${this.$t('page.music.title')} | ${this.$t('siteName')}` },
           { name: 'og:url', content: `https://db.showbyrock.net${this.$route.fullPath}`, hid: 'og:url' },
-          { name: 'og:image', content: `https://db.showbyrock.net/asset/musicjacket/musicjacket${String(this.music.id).padStart(8, '0')}.png`, hid: 'og:image' },
+          { name: 'og:image', content: `https://db.showbyrock.net/image/musicjacket/${this.music.jacket_image_id}`, hid: 'og:image' },
           { name: 'og:site_name', content: this.$t('siteName'), hid: 'og:site_name' },
           { name: 'twitter:card', content: 'summary_large_image', hid: 'twitter:card' }
         ]
@@ -133,6 +180,12 @@
       if (!music.translation) music.translation = {ko: {}, en: {}, ja: {}}
       return {
         music: music
+      }
+    },
+    created() {
+      if (this.music.info.length == 5) {
+        this.difficultys.push({ value: 4, label: 'LUNATIC' })
+        this.difficulty = 4
       }
     },
     components: {
@@ -158,6 +211,8 @@
           12: this.$t('artist.shinimonogurui'),
           13: this.$t('artist.uwasanopetals'),
           14: this.$t('artist.ninjinriot'),
+          15: this.$t('artist.zerotickholic'),
+          18: this.$t('artist.kuronoatmosphere'),
           90: this.$t('artist.special'),
           99: this.$t('artist.independent'),
         },
@@ -169,6 +224,9 @@
         ],
         difficulty: 3,
         editModal: false,
+        lyricModal: false,
+        LRC: false,
+        parsedLRC: [],
         model: {ko: {}, en: {}, ja: {}}
       }
     },
@@ -184,6 +242,23 @@
         let seconds = String(Math.floor(this.music.length - minutes * 60)).padStart(2, '0')
         
         return `${minutes}:${seconds}`
+      },
+      parseLRC() {
+        let arr = this.model[this.$i18n.locale].lyric.split('\n')
+        this.parsedLRC = arr.map(v => {
+          let t = v.split(/(\[[0-9]{2}\:[0-9]{2}\.[0-9]{2}?\])/)
+          try {
+            return {
+              time: t[1],
+              lyric: t[2].slice(1)
+            }
+          } catch(err) {
+            return {
+              time: '',
+              lyric: t[0]
+            }
+          }
+        })
       }
     },
     methods: {
@@ -191,11 +266,21 @@
         this.model = JSON.parse(JSON.stringify(this.music.translation))
         this.editModal = true
       },
+      async initLyricModal() {
+        this.model = JSON.parse(JSON.stringify(this.music.translation))
+        this.lyricModal = true
+      },
       async translateMusic() {
         let data = this.model
         await this.$axios.$put(`/api/edit/music/${this.music.id}`, { data })
         this.music.translation = JSON.parse(JSON.stringify(this.model))
         this.editModal = false
+      },
+      async translateLyric() {
+        let data = this.model
+        await this.$axios.$put(`/api/edit/music/${this.music.id}`, { data })
+        this.music.translation = JSON.parse(JSON.stringify(this.model))
+        this.lyricModal = false
       }
     }
   };

@@ -1,5 +1,4 @@
 import { Router } from 'express'
-const cache = require('express-redis-cache')()
 const router = Router()
 
 import { Events, EventMyumons, Gachas } from '../models'
@@ -13,7 +12,7 @@ router.get('/event', async (req, res, next) => {
   }
 })
 
-router.get('/event/:id', cache.route(3600 * 24), async (req, res, next) => {
+router.get('/event/:id', async (req, res, next) => {
   try {
     let event = await Events.findOne().where('id', req.params.id).select('-_id').lean()
     let myumons = await EventMyumons.find().where('event_id', event.id).select('-_id myumon_id').lean()

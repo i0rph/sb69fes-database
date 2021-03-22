@@ -40,10 +40,10 @@
                 </h1>
                 <h1 class="display-2 mb-0" v-else>{{myumon.name}}</h1>
                 <hr class="my-3">
-                <base-progress striped showLabel :label="$t('life')" :labelValue="stats.life" type="success" :value="(stats.life / 8)" :height="8"></base-progress>
-                <base-progress striped showLabel :label="$t('rhythm')" :labelValue="stats.rhythm" type="rhythm" :value="(stats.rhythm / 80)" :height="8"></base-progress>
-                <base-progress striped showLabel :label="$t('melody')" :labelValue="stats.melody" type="melody" :value="(stats.melody / 80)" :height="8"></base-progress>
-                <base-progress striped showLabel :label="$t('harmony')" :labelValue="stats.harmony" type="harmony" :value="(stats.harmony / 80)" :height="8"></base-progress>
+                <base-progress striped showLabel :label="$t('life')" :labelValue="stats.life" type="success" :value="(stats.life / 10)" :height="8"></base-progress>
+                <base-progress striped showLabel :label="$t('rhythm')" :labelValue="stats.rhythm" type="rhythm" :value="(stats.rhythm / 100)" :height="8"></base-progress>
+                <base-progress striped showLabel :label="$t('melody')" :labelValue="stats.melody" type="melody" :value="(stats.melody / 100)" :height="8"></base-progress>
+                <base-progress striped showLabel :label="$t('harmony')" :labelValue="stats.harmony" type="harmony" :value="(stats.harmony / 100)" :height="8"></base-progress>
                 <div class="row">
                   <div class="col-auto pr-0">
                     <button-checkbox v-model="likability" button-classes="btn-secondary"><i class="fas fa-heart ml-0"></i></button-checkbox>
@@ -156,6 +156,8 @@
           12: this.$t('artist.shinimonogurui'),
           13: this.$t('artist.uwasanopetals'),
           14: this.$t('artist.ninjinriot'),
+          15: this.$t('artist.zerotickholic'),
+          18: this.$t('artist.kuronoatmosphere'),
           90: this.$t('artist.special'),
           99: this.$t('artist.independent'),
         },
@@ -212,7 +214,17 @@
           {id: 141, artist_id: 14, label: this.$t('character.arashi')},
           {id: 142, artist_id: 14, label: this.$t('character.oboro')},
           {id: 143, artist_id: 14, label: this.$t('character.rin')},
-          {id: 144, artist_id: 14, label: this.$t('character.kamui')}
+          {id: 144, artist_id: 14, label: this.$t('character.kamui')},
+          {id: 151, artist_id: 15, label: this.$t('character.gyarako')},
+          {id: 152, artist_id: 15, label: this.$t('character.shimakku')},
+          {id: 153, artist_id: 15, label: this.$t('character.reppanyo')},
+          {id: 154, artist_id: 15, label: this.$t('character.kiriri')},
+          {id: 181, artist_id: 18, label: this.$t('character.919')},
+          {id: 182, artist_id: 18, label: this.$t('character.151')},
+          {id: 183, artist_id: 18, label: this.$t('character.661')},
+          {id: 184, artist_id: 18, label: this.$t('character.659')},
+          {id: 185, artist_id: 18, label: this.$t('character.13')},
+          {id: 911, artist_id: 90, label: this.$t('character.shuu')},
         ],
         max: true,
         likability: true,

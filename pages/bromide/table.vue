@@ -45,27 +45,27 @@
                 </el-table-column>
                 <el-table-column :label="$t('total')" sortable prop="total" min-width="180">
                   <template slot-scope="{row}">
-                    <base-progress type="info" :value="(row.total / 160)" :height="8"></base-progress>
+                    <base-progress type="info" :value="(row.total / 180)" :height="8"></base-progress>
                   </template>
                 </el-table-column>
                 <el-table-column :label="$t('life')" sortable prop="life" min-width="180">
                   <template slot-scope="{row}">
-                    <base-progress type="success" :value="(row.life / 9)" :height="8"></base-progress>
+                    <base-progress type="success" :value="(row.life / 10)" :height="8"></base-progress>
                   </template>
                 </el-table-column>
                 <el-table-column :label="$t('rhythm')" sortable prop="rhythm" min-width="180">
                   <template slot-scope="{row}">
-                    <base-progress type="rhythm" :value="(row.rhythm / 80)" :height="8"></base-progress>
+                    <base-progress type="rhythm" :value="(row.rhythm / 100)" :height="8"></base-progress>
                   </template>
                 </el-table-column>
                 <el-table-column :label="$t('melody')" sortable prop="melody" min-width="180">
                   <template slot-scope="{row}">
-                    <base-progress type="melody" :value="(row.melody / 80)" :height="8"></base-progress>
+                    <base-progress type="melody" :value="(row.melody / 100)" :height="8"></base-progress>
                   </template>
                 </el-table-column>
                 <el-table-column :label="$t('harmony')" sortable prop="harmony" min-width="180">
                   <template slot-scope="{row}">
-                    <base-progress type="harmony" :value="(row.harmony / 80)" :height="8"></base-progress>
+                    <base-progress type="harmony" :value="(row.harmony / 100)" :height="8"></base-progress>
                   </template>
                 </el-table-column>
               </el-table>
@@ -135,6 +135,8 @@
           12: this.$t('artist.shinimonogurui'),
           13: this.$t('artist.uwasanopetals'),
           14: this.$t('artist.ninjinriot'),
+          15: this.$t('artist.zerotickholic'),
+          18: this.$t('artist.kuronoatmosphere'),
           90: this.$t('artist.special'),
           99: this.$t('artist.independent'),
         },
@@ -191,7 +193,17 @@
           {value: 141, artist_id: 14, text: this.$t('character.arashi')},
           {value: 142, artist_id: 14, text: this.$t('character.oboro')},
           {value: 143, artist_id: 14, text: this.$t('character.rin')},
-          {value: 144, artist_id: 14, text: this.$t('character.kamui')}
+          {value: 144, artist_id: 14, text: this.$t('character.kamui')},
+          {value: 151, artist_id: 15, text: this.$t('character.gyarako')},
+          {value: 152, artist_id: 15, text: this.$t('character.shimakku')},
+          {value: 153, artist_id: 15, text: this.$t('character.reppanyo')},
+          {value: 154, artist_id: 15, text: this.$t('character.kiriri')},
+          {value: 181, artist_id: 18, text: this.$t('character.919')},
+          {value: 182, artist_id: 18, text: this.$t('character.151')},
+          {value: 183, artist_id: 18, text: this.$t('character.661')},
+          {value: 184, artist_id: 18, text: this.$t('character.659')},
+          {value: 185, artist_id: 18, text: this.$t('character.13')},
+          {value: 911, artist_id: 90, text: this.$t('character.shuu')},
         ]
       }
     },

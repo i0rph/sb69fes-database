@@ -17,6 +17,8 @@
         
         <sidebar-item :link="{ name: $t('page.comic.title'), icon: 'fas fa-book text-orange', path: localePath('comic') }"></sidebar-item>
         
+        <sidebar-item :link="{ name: $t('page.quiz.title'), icon: 'fas fa-question-circle text-gray', path: localePath('quiz') }"></sidebar-item>
+        
       </template>
 
       <template slot="links-after">

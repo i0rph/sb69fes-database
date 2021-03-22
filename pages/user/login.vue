@@ -38,13 +38,13 @@
             <small>{{ $t('account.or') }}</small>
           </div>
           <div class="text-center">
-            <a href="/auth/twitter">
+            <a :href="`/auth/twitter?redirect=${encodeURIComponent($route.query.redirect)}`">
               <base-button type="twitter" icon class="w-100 mb-3">
                 <span class="btn-inner--icon"><i class="fab fa-twitter"></i></span>
                 <span class="btn-inner--text">{{ $t('account.login_twitter') }}</span>
               </base-button>
             </a>
-            <a href="/auth/google">
+            <a :href="`/auth/google?redirect=${encodeURIComponent($route.query.redirect)}`">
               <base-button type="google-plus" icon class="w-100">
                 <span class="btn-inner--icon"><i class="fab fa-google"></i></span>
                 <span class="btn-inner--text">{{ $t('account.login_google') }}</span>
@@ -100,7 +100,8 @@
             email: this.model.email,
             password: this.model.password
           }).then(() => {
-            this.$router.push(this.localePath('/'))
+            if (this.$route.query.redirect) this.$router.push(this.$route.query.redirect)
+            else this.$router.push(this.localePath('/'))
           })
         } catch(err) {
           this.error = this.$t(`error.${err.name}`)

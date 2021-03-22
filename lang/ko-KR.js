@@ -28,6 +28,11 @@ export default {
       title: '계정',
       register: '회원가입',
       login: '로그인'
+    },
+    quiz: {
+      title: '퀴즈',
+      custom: '커스텀 퀴즈',
+      play: '퀴즈 플레이'
     }
   },
   error: {
@@ -98,6 +103,7 @@ export default {
   },
   edit: {
     title: '번역 수정',
+    lyric: '가사 수정',
     name: '이름',
     description: '설명',
     submit: '수정'
@@ -115,7 +121,9 @@ export default {
     },
     skill: {
       label: '스킬',
-      support: '서포트 스킬'
+      support: '서포트 스킬',
+      active: '액티브 스킬',
+      passive: '패시브 스킬'
     },
     shinka: '각성',
     unshinka: '각성 전',
@@ -149,6 +157,21 @@ export default {
     myumons: '이벤트 보너스 브로마이드',
     category_name: '이벤트 카테고리'
   },
+  quiz: {
+    correct: '정답',
+    wrong: '오답',
+    title: '제목',
+    band: '밴드',
+    next: '다음',
+    normal: '일반',
+    custom: '커스텀',
+    playLimit: '음악 플레이 시간',
+    timeLimit: '제한시간',
+    quizAmount: '문제 수',
+    showBand: '밴드표시',
+    showTranslation: '제목 번역표시',
+    start: '시작'
+  },
   artist: {
     mashumairesh: 'Mashumairesh!!',
     plasmagica: '플라즈마지카',
@@ -164,6 +187,8 @@ export default {
     shinimonogurui: '시니모노구루이',
     uwasanopetals: '우와사노페탈즈',
     ninjinriot: "닌진 라이어트",
+    zerotickholic: "제로틱홀릭",
+    kuronoatmosphere: "Kuronoatmosphere",
     special: '스페셜',
     independent: '무소속'
   },
@@ -220,6 +245,16 @@ export default {
     arashi: '아라시',
     oboro: '오보로',
     rin: '린',
-    kamui: '카무이'
+    kamui: '카무이',
+    gyarako: '갸라코',
+    shimakku: '시맛쿠',
+    reppanyo: '렛파뇨',
+    kiriri: '기리리',
+    151: '151 (이코이)',
+    13: '13 (이미)',
+    659: '659 (로코쿠)',
+    919: '919 (나이쿠)',
+    661: '661 (로로이)',
+    shuu: '슈우'
   }
 }

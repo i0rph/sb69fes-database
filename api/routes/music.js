@@ -1,5 +1,4 @@
 import { Router } from 'express'
-const cache = require('express-redis-cache')()
 const router = Router()
 
 import { Musics, MusicsRequirements, MusicsGrades, MusicInfos, MusicNotes } from '../models'
@@ -13,7 +12,7 @@ router.get('/music', async (req, res, next) => {
   }
 })
 
-router.get('/music/:id', cache.route(3600 * 24), async (req, res, next) => {
+router.get('/music/:id', async (req, res, next) => {
   try {
     let music = await Musics.findOne().where('id', req.params.id).select('-_id -ended_at -fever_started_at -name_hiragana -started_at').lean()
     

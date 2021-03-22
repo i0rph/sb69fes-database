@@ -1,5 +1,4 @@
 import { Router } from 'express'
-const cache = require('express-redis-cache')()
 const router = Router()
 
 import { Myumons, MyumonSkills, MyumonSkillArgs, MyumonGrowCurves } from '../models'
@@ -13,7 +12,7 @@ router.get('/bromide', async (req, res, next) => {
   }
 })
 
-router.get('/bromide/table', cache.route(3600 * 24), async (req, res, next) => {
+router.get('/bromide/table', async (req, res, next) => {
   try {
     let myumons = await Myumons.find().select('-_id').lean()
     
@@ -47,7 +46,7 @@ router.get('/bromide/table', cache.route(3600 * 24), async (req, res, next) => {
   }
 })
 
-router.get('/bromide/:id', cache.route(3600 * 24), async (req, res, next) => {
+router.get('/bromide/:id', async (req, res, next) => {
   try {
     let myumon = await Myumons.findOne().where('id', req.params.id).select('-_id -asset_id -mini_asset_id').lean()
 

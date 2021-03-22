@@ -24,7 +24,7 @@
                   <base-input alternative type="email" prepend-icon="fas fa-envelope" :label="$t('account.email')" :name="$t('account.email')" rules="required|email" v-model="model.email"></base-input>
                 </div>
                 <div class="col-12">
-                  <base-input alternative type="text" prepend-icon="fas fa-envelope" :label="$t('account.username')" :name="$t('account.username')" :rules="{ required: true, min: 5, max: 32 }" v-model="model.username"></base-input>
+                  <base-input alternative type="text" prepend-icon="fas fa-user" :label="$t('account.username')" :name="$t('account.username')" :rules="{ required: true, min: 5, max: 32 }" v-model="model.username"></base-input>
                 </div>
                 <div class="col-12">
                   <base-input alternative :type="passwordType" prepend-icon="fas fa-lock" :name="$t('account.password')" :label="$t('account.password')" :rules="{ required: true, regex: regex }" v-model="model.password" formGroupClasses="mb-0">
@@ -129,7 +129,8 @@
             username: this.model.username,
             role: []
           }).then(() => {
-            this.$router.push(this.localePath('/'))
+            if (this.$route.query.redirect) this.$router.push(this.$route.query.redirect)
+            else this.$router.push(this.localePath('/'))
           })
         } catch(err) {
           this.error = this.$t(`error.${err.name}`)
