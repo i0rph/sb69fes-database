@@ -138,6 +138,9 @@
           15: this.$t('artist.zerotickholic'),
           18: this.$t('artist.kuronoatmosphere'),
           90: this.$t('artist.special'),
+          91: this.$t('artist.amatelast'),
+          92: this.$t('artist.gaugastrikes'),
+          93: this.$t('artist.shizuku'),
           99: this.$t('artist.independent'),
         },
         characters: [
@@ -203,7 +206,9 @@
           {value: 183, artist_id: 18, text: this.$t('character.661')},
           {value: 184, artist_id: 18, text: this.$t('character.659')},
           {value: 185, artist_id: 18, text: this.$t('character.13')},
-          {value: 911, artist_id: 90, text: this.$t('character.shuu')},
+          {value: 911, artist_id: 91, text: this.$t('character.shuu')},
+          {value: 912, artist_id: 92, text: this.$t('character.kintaurus')},
+          {value: 913, artist_id: 93, text: this.$t('character.corriente')},
         ]
       }
     },

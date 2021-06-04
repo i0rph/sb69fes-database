@@ -52,7 +52,7 @@ router.get('/bromide/:id', async (req, res, next) => {
 
     if (myumon.shinka_myumon_id === 0) {
       let unshinka = await Myumons.findOne().where('shinka_myumon_id', myumon.id)
-      myumon.unshinka_myumon_id = unshinka.id
+      if (unshinka) myumon.unshinka_myumon_id = unshinka.id
     }
     
     let levelLimit = {

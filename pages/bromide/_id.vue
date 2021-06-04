@@ -21,7 +21,7 @@
           <card>
             <div class="row justify-content-center pt-lg-3">
               <div class="col-lg-auto col-md-12 mb-3 my-lg-auto">
-                <span class="badge-circle badge-lg border-0 bg-secondary text-sm" style="position: absolute; right: 4px; top: -8px; box-shadow: 0.1rem 0.1rem 0.2rem rgba(136, 152, 170, 0.875);" @click.prevent="$router.push(localePath(`/bromide/${myumon.shinka_myumon_id ? myumon.shinka_myumon_id : myumon.unshinka_myumon_id}`))">
+                <span class="badge-circle badge-lg border-0 bg-secondary text-sm" style="position: absolute; right: 4px; top: -8px; box-shadow: 0.1rem 0.1rem 0.2rem rgba(136, 152, 170, 0.875);" @click.prevent="$router.push(localePath(`/bromide/${myumon.shinka_myumon_id ? myumon.shinka_myumon_id : myumon.unshinka_myumon_id}`))" v-if="myumon.shinka_myumon_id || myumon.unshinka_myumon_id">
                   <i class="fas fa-exchange-alt"></i>
                 </span>
                 <img v-lazy="`image/bromide/${myumon.id}`"
@@ -159,6 +159,9 @@
           15: this.$t('artist.zerotickholic'),
           18: this.$t('artist.kuronoatmosphere'),
           90: this.$t('artist.special'),
+          91: this.$t('artist.amatelast'),
+          92: this.$t('artist.gaugastrikes'),
+          93: this.$t('artist.shizuku'),
           99: this.$t('artist.independent'),
         },
         characters: [
@@ -224,7 +227,9 @@
           {id: 183, artist_id: 18, label: this.$t('character.661')},
           {id: 184, artist_id: 18, label: this.$t('character.659')},
           {id: 185, artist_id: 18, label: this.$t('character.13')},
-          {id: 911, artist_id: 90, label: this.$t('character.shuu')},
+          {id: 911, artist_id: 91, label: this.$t('character.shuu')},
+          {id: 912, artist_id: 92, label: this.$t('character.kintaurus')},
+          {id: 913, artist_id: 93, label: this.$t('character.corriente')},
         ],
         max: true,
         likability: true,

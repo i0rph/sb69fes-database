@@ -188,6 +188,9 @@ export default {
     ninjinriot: "Ninjinriot",
     zerotickholic: "Zeroticholic",
     kuronoatmosphere: "Kuronoatmosphere",
+    amatelast: 'Amatelast',
+    gaugastrikes: 'Gaugastrikes',
+    shizuku: 'Shizuku Secret Mind',
     special: 'Special',
     independent: 'Independent'
   },
@@ -254,6 +257,8 @@ export default {
     659: '659 (Rokoku)',
     919: '919 (Naiku)',
     661: '661 (Roroi)',
-    shuu: 'Shū'
+    shuu: 'Shū',
+    kintaurus: 'Kintaurus',
+    corriente: 'Corriente'
   }
 }

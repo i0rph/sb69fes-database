@@ -189,6 +189,9 @@ export default {
     ninjinriot: "닌진 라이어트",
     zerotickholic: "제로틱홀릭",
     kuronoatmosphere: "Kuronoatmosphere",
+    amatelast: 'Amatelast',
+    gaugastrikes: '가우가 스트라이크스',
+    shizuku: '시즈쿠 시크릿마인드',
     special: '스페셜',
     independent: '무소속'
   },
@@ -255,6 +258,8 @@ export default {
     659: '659 (로코쿠)',
     919: '919 (나이쿠)',
     661: '661 (로로이)',
-    shuu: '슈우'
+    shuu: '슈우',
+    kintaurus: '킨타우로스',
+    corriente: '코리엔테'
   }
 }
